@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #02070F;
+  color: #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar - functional, not decorative */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1220;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2F80FF;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+/* Physics-first design system */
+@layer components {
+  /* Base panel component - 3 depth levels */
+  .panel {
+    @apply bg-system-surface border border-electric-blue border-opacity-20 rounded-lg overflow-hidden;
+  }
+
+  .panel-depth-1 {
+    @apply panel p-4;
+  }
+
+  .panel-depth-2 {
+    @apply panel p-6 bg-panel-layer;
+  }
+
+  .panel-depth-3 {
+    @apply panel p-8 bg-gradient-to-br from-panel-layer to-system-surface;
+  }
+
+  /* Signal nodes - color = state */
+  .signal-node {
+    @apply relative w-8 h-8 rounded-full border-2;
+  }
+
+  .signal-stable {
+    @apply signal-node border-system-green;
+  }
+
+  .signal-active {
+    @apply signal-node border-electric-blue bg-electric-blue bg-opacity-30;
+  }
+
+  .signal-warning {
+    @apply signal-node border-amber;
+  }
+
+  .signal-critical {
+    @apply signal-node border-red-500;
+  }
+
+  /* Edges and flows - represent system flow */
+  .flow-edge {
+    @apply border-electric-blue border-opacity-40;
+  }
+
+  .flow-edge-active {
+    @apply border-neon-cyan border-opacity-100;
+  }
+
+  /* Grid overlay - environment-first */
+  .grid-overlay {
+    @apply absolute inset-0 opacity-5 pointer-events-none;
+  }
+
+  .grid-line {
+    @apply border-electric-blue;
+  }
+
+  /* Text hierarchy - engineering logs style */
+  .system-statement {
+    @apply text-h1 font-bold text-white;
+  }
+
+  .module-header {
+    @apply text-h2 font-bold text-white;
+  }
+
+  .body-text {
+    @apply text-body text-gray-300;
+  }
+
+  .telemetry-text {
+    @apply font-mono text-sm text-neon-cyan;
+  }
+}
